@@ -25,3 +25,12 @@ enum UserType {
   ADMINISTRADOR
   CLIENTE
 }
+
+model Customer {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId String
+  name   String  @unique
+  email  String
+  phone  String
+  planId String?
+}
