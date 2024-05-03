@@ -1,9 +1,10 @@
 import { UserType } from '@prisma/client';
 
-export class User {
-  id?: string;
+export interface UserPayload {
+  sub: string;
   email: string;
-  password: string;
   name: string;
   userType: UserType;
+  iat?: number;
+  exp?: number;
 }

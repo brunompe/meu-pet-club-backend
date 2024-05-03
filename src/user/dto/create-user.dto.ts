@@ -3,6 +3,7 @@ import { User } from '../entities/user.entity';
 import {
   IsEmail,
   IsEnum,
+  IsOptional,
   IsString,
   Matches,
   MaxLength,
@@ -10,6 +11,9 @@ import {
 } from 'class-validator';
 
 export class CreateUserDto extends User {
+  @IsOptional()
+  id: string;
+
   @IsEmail()
   email: string;
 
@@ -25,5 +29,5 @@ export class CreateUserDto extends User {
   name: string;
 
   @IsEnum(UserType)
-  userType: UserType;
+  userType: UserType = 'ADMINISTRADOR';
 }
