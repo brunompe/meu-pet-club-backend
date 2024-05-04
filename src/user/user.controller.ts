@@ -2,7 +2,6 @@ import { Body, Controller, Get, Post, Request } from '@nestjs/common';
 import { AuthRequest } from 'src/auth/models/AuthRequest';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
-import { JwtService } from '@nestjs/jwt';
 
 @Controller('user')
 export class UserController {
