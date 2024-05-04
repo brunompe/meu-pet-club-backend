@@ -1,16 +1,27 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Request } from '@nestjs/common';
+import { AuthRequest } from 'src/auth/models/AuthRequest';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
-import { IsPublic } from 'src/auth/decorators/is-public.decorator';
+import { JwtService } from '@nestjs/jwt';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @IsPublic()
+  @Post('admin')
+  createAdmin(
+    @Body() createUserDto: CreateUserDto,
+    @Request() req: AuthRequest,
+  ) {
+    return this.userService.createAdmin(createUserDto);
+  }
+
   @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  createCustomer(
+    @Body() createUserDto: CreateUserDto,
+    @Request() req: AuthRequest,
+  ) {
+    return this.userService.createCustomer(createUserDto, req);
   }
 
   @Get()
