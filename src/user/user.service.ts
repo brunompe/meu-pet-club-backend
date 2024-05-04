@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
+import { AuthRequest } from 'src/auth/models/AuthRequest';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './entities/user.entity';
-import { AuthRequest } from 'src/auth/models/AuthRequest';
-import { JwtService } from '@nestjs/jwt';
 import { IsNotAdminError } from './errors/IsNotAdminError';
+import { IsAdmin } from './utils/isAdmin';
 
 @Injectable()
 export class UserService {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly jwtService: JwtService,
+    private readonly isAdmin: IsAdmin,
   ) {}
 
   async createAdmin(createUserDto: CreateUserDto): Promise<User> {
@@ -32,11 +32,11 @@ export class UserService {
 
   async createCustomer(
     createUserDto: CreateUserDto,
-    req: AuthRequest,
+    user: User,
   ): Promise<User> {
-    const isAdmin = this.isAdmin(req);
+    const hasAdminPrivileges = this.isAdmin.isAdmin(user);
 
-    if (isAdmin) {
+    if (hasAdminPrivileges) {
       const data: Prisma.UserCreateInput = {
         ...createUserDto,
         password: await bcrypt.hash(createUserDto.password, 10),
@@ -51,20 +51,6 @@ export class UserService {
       };
     } else {
       throw new IsNotAdminError("This user doesn't have permission to Create");
-    }
-  }
-
-  isAdmin(req: AuthRequest) {
-    const authToken = req.headers['authorization'].split(' ')[1];
-    const reqUserRoles = this.jwtService.decode(authToken).roles;
-    const hasAdminRole = reqUserRoles.some(
-      (role) => role.toLowerCase() === 'administrador',
-    );
-
-    if (hasAdminRole) {
-      return true;
-    } else {
-      return false;
     }
   }
 

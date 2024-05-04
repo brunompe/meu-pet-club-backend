@@ -1,18 +1,33 @@
 import { Injectable } from '@nestjs/common';
+import { AuthRequest } from 'src/auth/models/AuthRequest';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { IsNotAdminError } from 'src/user/errors/IsNotAdminError';
+import { IsAdmin } from 'src/user/utils/isAdmin';
 import { CreatePlanDto } from './dto/create-plan.dto';
 import { UpdatePlanDto } from './dto/update-plan.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { UserDecorator } from 'src/user/decorators/UserDecorator.decorator';
+import { User } from 'src/user/entities/user.entity';
+import { UnauthorizedError } from 'src/auth/errors/unauthorized.error';
 
 @Injectable()
 export class PlanService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly isAdmin: IsAdmin,
+  ) {}
 
-  async create(createPlanDto: CreatePlanDto) {
-    const plan = await this.prisma.plan.create({
-      data: createPlanDto,
-    });
+  async create(createPlanDto: CreatePlanDto, @UserDecorator() user: User) {
+    const hasAdminPrivileges = await this.isAdmin.isAdmin(user);
 
-    return plan;
+    if (hasAdminPrivileges) {
+      const plan = await this.prisma.plan.create({
+        data: createPlanDto,
+      });
+
+      return plan;
+    } else {
+      throw new UnauthorizedError("You can't Create!");
+    }
   }
 
   async findAll() {
@@ -31,20 +46,34 @@ export class PlanService {
     return plan;
   }
 
-  async update(id: string, updatePlanDto: UpdatePlanDto) {
-    const plan = await this.prisma.plan.update({
-      where: {
-        id,
-      },
-      data: updatePlanDto,
-    });
+  async update(id: string, updatePlanDto: UpdatePlanDto, user: User) {
+    const hasAdminPrivileges = this.isAdmin.isAdmin(user);
+
+    if (hasAdminPrivileges) {
+      const plan = await this.prisma.plan.update({
+        where: {
+          id,
+        },
+        data: updatePlanDto,
+      });
+
+      return plan;
+    } else {
+      throw new UnauthorizedError("You can't Update!");
+    }
   }
 
-  async remove(id: string) {
-    await this.prisma.plan.delete({
-      where: {
-        id,
-      },
-    });
+  async remove(id: string, user: User) {
+    const hasAdminPrivileges = this.isAdmin.isAdmin(user);
+
+    if (hasAdminPrivileges) {
+      await this.prisma.plan.delete({
+        where: {
+          id,
+        },
+      });
+    } else {
+      throw new UnauthorizedError("You can't Delete!");
+    }
   }
 }
