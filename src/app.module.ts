@@ -6,9 +6,11 @@ import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
+import { PlanModule } from './plan/plan.module';
+import { PetModule } from './pet/pet.module';
 
 @Module({
-  imports: [PrismaModule, UserModule, AuthModule],
+  imports: [PrismaModule, UserModule, AuthModule, PlanModule, PetModule],
   controllers: [AppController],
   providers: [
     AppService,
