@@ -5,5 +5,5 @@ export class User {
   email: string;
   password: string;
   name: string;
-  userType: UserType;
+  roles: UserType[];
 }

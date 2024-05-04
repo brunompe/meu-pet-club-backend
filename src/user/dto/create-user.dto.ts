@@ -1,14 +1,14 @@
 import { UserType } from '@prisma/client';
-import { User } from '../entities/user.entity';
 import {
+  IsArray,
   IsEmail,
-  IsEnum,
   IsOptional,
   IsString,
   Matches,
   MaxLength,
   MinLength,
 } from 'class-validator';
+import { User } from '../entities/user.entity';
 
 export class CreateUserDto extends User {
   @IsOptional()
@@ -28,6 +28,6 @@ export class CreateUserDto extends User {
   @IsString()
   name: string;
 
-  @IsEnum(UserType)
-  userType: UserType = 'ADMINISTRADOR';
+  @IsArray()
+  roles: UserType[] = ['ADMINISTRADOR'];
 }
