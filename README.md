@@ -82,7 +82,7 @@ Para importar a collection do Postman, basta importar o arquivo "Meu Pet Club AP
 Para acessar a documentação, inicie a aplicação e acesse
 
 ```bash
-   http:// localhost:3000/api
+   http://localhost:3000/api
 ```
 
 ### Autor
