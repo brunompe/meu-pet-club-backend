@@ -15,6 +15,6 @@ import { IsAdmin } from './utils/isAdmin';
   ],
   controllers: [UserController],
   providers: [UserService, IsAdmin],
-  exports: [UserService],
+  exports: [UserService, UserModule],
 })
 export class UserModule {}

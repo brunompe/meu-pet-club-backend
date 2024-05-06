@@ -1,19 +1,17 @@
 import {
-  Controller,
-  Get,
-  Post,
   Body,
-  Patch,
-  Param,
+  Controller,
   Delete,
-  Request,
+  Get,
+  Param,
+  Patch,
+  Post,
 } from '@nestjs/common';
-import { PlanService } from './plan.service';
+import { User } from 'src/user/entities/user.entity';
+import { UserDecorator } from '../user/decorators/user.decorator';
 import { CreatePlanDto } from './dto/create-plan.dto';
 import { UpdatePlanDto } from './dto/update-plan.dto';
-import { AuthRequest } from 'src/auth/models/AuthRequest';
-import { UserDecorator } from 'src/user/decorators/UserDecorator.decorator';
-import { User } from 'src/user/entities/user.entity';
+import { PlanService } from './plan.service';
 
 @Controller('plan')
 export class PlanController {

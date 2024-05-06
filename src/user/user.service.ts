@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import { AuthRequest } from 'src/auth/models/AuthRequest';
@@ -22,6 +22,16 @@ export class UserService {
       roles: ['ADMINISTRADOR'],
     };
 
+    const userExists = await this.prisma.user.findUnique({
+      where: {
+        email: data.email,
+      },
+    });
+
+    if (userExists) {
+      throw new ConflictException('Email já cadastrado');
+    }
+
     const createdUser = await this.prisma.user.create({ data });
 
     return {
@@ -34,7 +44,7 @@ export class UserService {
     createUserDto: CreateUserDto,
     user: User,
   ): Promise<User> {
-    const hasAdminPrivileges = this.isAdmin.isAdmin(user);
+    const hasAdminPrivileges = await this.isAdmin.isAdmin(user);
 
     if (hasAdminPrivileges) {
       const data: Prisma.UserCreateInput = {
@@ -42,6 +52,16 @@ export class UserService {
         password: await bcrypt.hash(createUserDto.password, 10),
         roles: ['CLIENTE'],
       };
+
+      const userExists = await this.prisma.user.findUnique({
+        where: {
+          email: data.email,
+        },
+      });
+
+      if (userExists) {
+        throw new ConflictException('Email já cadastrado');
+      }
 
       const createdUser = await this.prisma.user.create({ data });
 

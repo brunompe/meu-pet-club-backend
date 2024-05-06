@@ -14,9 +14,16 @@ export class CreateUserDto extends User {
   @IsOptional()
   id: string;
 
+  @IsOptional()
+  userId: string;
+
+  @IsOptional()
+  phone: string;
+
   @IsEmail()
   email: string;
 
+  @IsOptional()
   @IsString()
   @MinLength(4)
   @MaxLength(20)

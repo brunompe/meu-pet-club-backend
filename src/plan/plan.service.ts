@@ -1,13 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { AuthRequest } from 'src/auth/models/AuthRequest';
+import { UnauthorizedError } from 'src/auth/errors/unauthorized.error';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { IsNotAdminError } from 'src/user/errors/IsNotAdminError';
+import { User } from 'src/user/entities/user.entity';
 import { IsAdmin } from 'src/user/utils/isAdmin';
+import { UserDecorator } from '../user/decorators/user.decorator';
 import { CreatePlanDto } from './dto/create-plan.dto';
 import { UpdatePlanDto } from './dto/update-plan.dto';
-import { UserDecorator } from 'src/user/decorators/UserDecorator.decorator';
-import { User } from 'src/user/entities/user.entity';
-import { UnauthorizedError } from 'src/auth/errors/unauthorized.error';
 
 @Injectable()
 export class PlanService {
