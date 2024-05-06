@@ -1,0 +1,514 @@
+{
+	"info": {
+		"_postman_id": "bfb65ac7-847d-4cdc-a1a2-18ac5ad5a5d8",
+		"name": "Meu Pet Club API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32871035"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM1MjZiZDVlOTJjNWRkMDQ2MmFhYTQiLCJlbWFpbCI6ImJydW5vbXBlQGdtYWlsLmNvbSIsIm5hbWUiOiJCcnVubyBNaXJhbmRhIFBlcmVpcmEiLCJ1c2VyVHlwZSI6IkFETUlOSVNUUkFET1IiLCJpYXQiOjE3MTQ3NTk0NjQsImV4cCI6MTcxNzM1MTQ2NH0.PteVpd3BW6YZVjQi5DIm07wMIXGW43sm3aXr4-NpQUw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"uuid": "a30ad443-2e83-458b-bca1-0b842780c7aa",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{base_ur}}/user",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateAdmin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM2MmZmMDU2ODQ3MjVhMDE1MTZmZTkiLCJlbWFpbCI6ImJydW5vbXBlMTBAZ21haWwuY29tIiwibmFtZSI6IkJydW5vIE1pcmFuZGEgUGVyZWlyYSIsInJvbGVzIjpbIkFETUlOSVNUUkFET1IiXSwiaWF0IjoxNzE0ODI3NjA1LCJleHAiOjE3MTc0MTk2MDV9.7iugBWjL1HT3c4TzWbJfEndAEr6ak0ECLceIfYJQwFA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"brunompe001@gmail.com\",\r\n    \"password\": \"Admin@123\",\r\n    \"name\": \"Bruno Miranda Pereira\",\r\n    \"roles\": [\"ADMINISTRADOR\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_ur}}/user/admin",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"user",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateCustomer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM4M2ZjNzg5NmJhNTlmNWUwMTZmNWEiLCJlbWFpbCI6ImJydW5vbXBlMkBnbWFpbC5jb20iLCJuYW1lIjoiQnJ1bm8gTWlyYW5kYSBQZXJlaXJhIiwicm9sZXMiOlsiQ0xJRU5URSJdLCJpYXQiOjE3MTQ5NjI4NTcsImV4cCI6MTcxNzU1NDg1N30.8bFKp7WQV4Ugs-SkYRDPkhv6nW8fXXC2kqVO_iDqCjE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"663526bd5e92c5dd0462aaa4\",\r\n    \"name\": \"Helena Pires Pereira\",\r\n    \"email\": \"helenaPiresPereira@gmail.com\",\r\n    \"phone\": \"66996235853\",\r\n    \"roles\": [\"CLIENTE\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_ur}}/user",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM1MjZiZDVlOTJjNWRkMDQ2MmFhYTQiLCJlbWFpbCI6ImJydW5vbXBlQGdtYWlsLmNvbSIsIm5hbWUiOiJCcnVubyBNaXJhbmRhIFBlcmVpcmEiLCJyb2xlcyI6W10sImlhdCI6MTcxNDgyNzA0MiwiZXhwIjoxNzE3NDE5MDQyfQ.f_mBG7zqtTVboUB4JJQnbLJ8Qp4PZpBOb8mVMIjslGM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"brunompe1@gmail.com\",\r\n    \"password\": \"Admin@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_ur}}/login",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plan",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM4M2ZhMTg5NmJhNTlmNWUwMTZmNTkiLCJlbWFpbCI6ImJydW5vbXBlMUBnbWFpbC5jb20iLCJuYW1lIjoiQnJ1bm8gTWlyYW5kYSBQZXJlaXJhIiwicm9sZXMiOlsiQURNSU5JU1RSQURPUiJdLCJpYXQiOjE3MTQ5NjUyMjEsImV4cCI6MTcxNzU1NzIyMX0.cgZXUzoDu8wB-i1K-RpGewZnuGkzKP9sCI1kl2eavyE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Premiu3\",\r\n    \"details\": \"Esse é o plano Premium\",\r\n    \"value\": \"199\",\r\n    \"userId\": \"66383fc7896ba59f5e016f5a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_ur}}/plan",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"plan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM4M2ZjNzg5NmJhNTlmNWUwMTZmNWEiLCJlbWFpbCI6ImJydW5vbXBlMkBnbWFpbC5jb20iLCJuYW1lIjoiQnJ1bm8gTWlyYW5kYSBQZXJlaXJhIiwicm9sZXMiOlsiQ0xJRU5URSJdLCJpYXQiOjE3MTQ5NjUzMjYsImV4cCI6MTcxNzU1NzMyNn0.pcwa8UCexPji4KPZkACua8CMfLJRnJb0YWZqVceQMgo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_ur}}/plan",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"plan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM2MzRjMzY1M2U3ZGY2MTRjZDNmYWUiLCJlbWFpbCI6ImJydW5vbXBlMThAZ21haWwuY29tIiwibmFtZSI6IkJydW5vIE1pcmFuZGEgUGVyZWlyYSIsInJvbGVzIjpbIkFETUlOSVNUUkFET1IiXSwiaWF0IjoxNzE0ODU1OTgxLCJleHAiOjE3MTc0NDc5ODF9.m2_fJhRWscD1AstWqDBVaNg6QQ7VcXx8o9HSDV2KY0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_ur}}/plan/663678dbbde61f02f84b7856",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"plan",
+								"663678dbbde61f02f84b7856"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM2MzRmMDY1M2U3ZGY2MTRjZDNmYWYiLCJlbWFpbCI6ImJydW5vbXBlMjBAZ21haWwuY29tIiwibmFtZSI6IkJydW5vIE1pcmFuZGEgUGVyZWlyYSIsInJvbGVzIjpbIkNMSUVOVEUiXSwiaWF0IjoxNzE0ODU2MTE1LCJleHAiOjE3MTc0NDgxMTV9.YzTRGcZgj4_KUzJjCOIkQBlNW5AIH7hksNPwJooPsCc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Premium das Galáxias\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_ur}}/plan/663678dbbde61f02f84b7856",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"plan",
+								"663678dbbde61f02f84b7856"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM2MzRjMzY1M2U3ZGY2MTRjZDNmYWUiLCJlbWFpbCI6ImJydW5vbXBlMThAZ21haWwuY29tIiwibmFtZSI6IkJydW5vIE1pcmFuZGEgUGVyZWlyYSIsInJvbGVzIjpbIkFETUlOSVNUUkFET1IiXSwiaWF0IjoxNzE0ODU1OTgxLCJleHAiOjE3MTc0NDc5ODF9.m2_fJhRWscD1AstWqDBVaNg6QQ7VcXx8o9HSDV2KY0A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_ur}}/plan/663678dbbde61f02f84b7856",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"plan",
+								"663678dbbde61f02f84b7856"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pet",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM4M2ZjNzg5NmJhNTlmNWUwMTZmNWEiLCJlbWFpbCI6ImJydW5vbXBlMkBnbWFpbC5jb20iLCJuYW1lIjoiQnJ1bm8gTWlyYW5kYSBQZXJlaXJhIiwicm9sZXMiOlsiQ0xJRU5URSJdLCJpYXQiOjE3MTQ5NjYwOTAsImV4cCI6MTcxNzU1ODA5MH0.a-ExFaFFnXsof-O4Wb-dXAYctYZ3eWkVf5sBCaODj_A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Premium\",\r\n    \"planId\": \"663840a1257168d94d5d1958\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_ur}}/pet",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM4M2ZjNzg5NmJhNTlmNWUwMTZmNWEiLCJlbWFpbCI6ImJydW5vbXBlMkBnbWFpbC5jb20iLCJuYW1lIjoiQnJ1bm8gTWlyYW5kYSBQZXJlaXJhIiwicm9sZXMiOlsiQ0xJRU5URSJdLCJpYXQiOjE3MTQ5NjYwOTAsImV4cCI6MTcxNzU1ODA5MH0.a-ExFaFFnXsof-O4Wb-dXAYctYZ3eWkVf5sBCaODj_A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_ur}}/pet",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM1MjZiZDVlOTJjNWRkMDQ2MmFhYTQiLCJlbWFpbCI6ImJydW5vbXBlQGdtYWlsLmNvbSIsIm5hbWUiOiJCcnVubyBNaXJhbmRhIFBlcmVpcmEiLCJ1c2VyVHlwZSI6IkFETUlOSVNUUkFET1IiLCJpYXQiOjE3MTQ3NTk0NjQsImV4cCI6MTcxNzM1MTQ2NH0.PteVpd3BW6YZVjQi5DIm07wMIXGW43sm3aXr4-NpQUw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_ur}}/pet/66358cfeb7ff83f0e0a3e4a7",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"pet",
+								"66358cfeb7ff83f0e0a3e4a7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM4M2ZjNzg5NmJhNTlmNWUwMTZmNWEiLCJlbWFpbCI6ImJydW5vbXBlMkBnbWFpbC5jb20iLCJuYW1lIjoiQnJ1bm8gTWlyYW5kYSBQZXJlaXJhIiwicm9sZXMiOlsiQ0xJRU5URSJdLCJpYXQiOjE3MTQ5NjYwOTAsImV4cCI6MTcxNzU1ODA5MH0.a-ExFaFFnXsof-O4Wb-dXAYctYZ3eWkVf5sBCaODj_A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Lilica\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_ur}}/pet/66384f0275a549e7a3eccf43",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"pet",
+								"66384f0275a549e7a3eccf43"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NjM1MjZiZDVlOTJjNWRkMDQ2MmFhYTQiLCJlbWFpbCI6ImJydW5vbXBlQGdtYWlsLmNvbSIsIm5hbWUiOiJCcnVubyBNaXJhbmRhIFBlcmVpcmEiLCJ1c2VyVHlwZSI6IkFETUlOSVNUUkFET1IiLCJpYXQiOjE3MTQ3NTk0NjQsImV4cCI6MTcxNzM1MTQ2NH0.PteVpd3BW6YZVjQi5DIm07wMIXGW43sm3aXr4-NpQUw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_ur}}/pet/66358cfeb7ff83f0e0a3e4a7",
+							"host": [
+								"{{base_ur}}"
+							],
+							"path": [
+								"pet",
+								"66358cfeb7ff83f0e0a3e4a7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_ur",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
