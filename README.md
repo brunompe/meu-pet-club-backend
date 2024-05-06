@@ -8,9 +8,9 @@ Projeto desenvolvido como teste para vaga de Desenvolvedor Back-End Pleno
 
 - [x] Deve ser possível cadastrar um usuário do tipo “ADMINISTRADOR” no sistema
 
-- Cadastro de clientes
+#### Cadastro de clientes
 
-  - [x] Um usuário “ADMINISTRADOR” será capaz de criar usuários do tipo “CLIENTE” no sistema, dando-lhe credenciais de acesso
+- [x] Um usuário “ADMINISTRADOR” será capaz de criar usuários do tipo “CLIENTE” no sistema, dando-lhe credenciais de acesso
 
 #### CRUD de Planos
 
@@ -26,9 +26,9 @@ Projeto desenvolvido como teste para vaga de Desenvolvedor Back-End Pleno
 
 #### Sistema de autenticação e autorização
 
-    - [x]  Deve haver um sistema de autenticação utilizando JWT
+- [x] Deve haver um sistema de autenticação utilizando JWT
 
-    - [x]  Cada tipo usuário deve ter apenas os acessos que lhe foram associados nos requisitos acima
+- [x] Cada tipo usuário deve ter apenas os acessos que lhe foram associados nos requisitos acima
 
 ### Instalação
 
