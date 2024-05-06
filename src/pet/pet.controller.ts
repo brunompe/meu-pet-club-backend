@@ -12,7 +12,9 @@ import { CreatePetDto } from './dto/create-pet.dto';
 import { UpdatePetDto } from './dto/update-pet.dto';
 import { UserDecorator } from 'src/user/decorators/user.decorator';
 import { User } from '@prisma/client';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Pet')
 @Controller('pet')
 export class PetController {
   constructor(private readonly petService: PetService) {}

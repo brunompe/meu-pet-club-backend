@@ -12,7 +12,9 @@ import { UserDecorator } from '../user/decorators/user.decorator';
 import { CreatePlanDto } from './dto/create-plan.dto';
 import { UpdatePlanDto } from './dto/update-plan.dto';
 import { PlanService } from './plan.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Plan')
 @Controller('plan')
 export class PlanController {
   constructor(private readonly planService: PlanService) {}
