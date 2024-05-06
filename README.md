@@ -1,73 +1,86 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Meu Pet Club API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Projeto desenvolvido como teste para vaga de Desenvolvedor Back-End Pleno
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Requisitos
 
-## Description
+#### Cadastro de usuário administrador do sistema
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [x] Deve ser possível cadastrar um usuário do tipo “ADMINISTRADOR” no sistema
 
-## Installation
+- Cadastro de clientes
 
-```bash
-$ npm install
-```
+  - [x] Um usuário “ADMINISTRADOR” será capaz de criar usuários do tipo “CLIENTE” no sistema, dando-lhe credenciais de acesso
 
-## Running the app
+#### CRUD de Planos
 
-```bash
-# development
-$ npm run start
+- [x] Um usuário do tipo “ADMINISTRADOR” será capaz de criar, editar, ler e excluir planos do sistema
 
-# watch mode
-$ npm run start:dev
+- [x] Um usuário do tipo “CLIENTE” é capaz de ler planos
 
-# production mode
-$ npm run start:prod
-```
+#### CRUD de Pet
 
-## Test
+- [x] Um usuário do tipo “CLIENTE” será capaz de criar um pet e associá-lo a sua conta
+- [x] Um pet deve ter obrigatoriamente um id de plano associado a si
+- [x] Um usuário do tipo “CLIENTE” também será capaz de ler, editar e deletar pets associados a sua conta
+
+#### Sistema de autenticação e autorização
+
+    - [x]  Deve haver um sistema de autenticação utilizando JWT
+
+    - [x]  Cada tipo usuário deve ter apenas os acessos que lhe foram associados nos requisitos acima
+
+### Instalação
+
+Realize o clone do repositório e acesse a pasta
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+  git clone https://github.com/brunompe/meu-pet-club-backend.git
+  cd meu-pet-club-backend
 ```
 
-## Support
+Realize as instalações das dependências
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+  npm install
+```
 
-## Stay in touch
+renomeie o arquivo .env.example para .env
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+  mv .env.example .env
+```
 
-## License
+Altere as chaves do .env de acordo com suas variáveis de ambiente.
 
-Nest is [MIT licensed](LICENSE).
+- Dica: Crie um cluster através do MongoDB Atlas.
+
+Após setar as variáveis de ambiente, precisamos gerar os modelos do banco
+
+```bash
+   npx prisma generate
+```
+
+Agora é só rodar o projeto
+
+```bash
+   npm start
+```
+
+Ou se quiser rodar em modo de desenvolvimento
+
+```bash
+   npm run start:dev
+```
+
+### Postman Collection
+
+Para importar a collection do Postman, basta importar o arquivo "Meu Pet Club API.postman_collection.json" que está na raiz do projeto.
+
+### Autor
+
+#### Bruno Miranda
+
+- [Github](https://www.github.com/brunompe)
+- [Linkedin](https://www.linkedin.com/in/brunompe)
+- [E-mail](brunompe@gmail.com)
