@@ -77,6 +77,14 @@ Ou se quiser rodar em modo de desenvolvimento
 
 Para importar a collection do Postman, basta importar o arquivo "Meu Pet Club API.postman_collection.json" que está na raiz do projeto.
 
+### Documentação
+
+Para acessar a documentação, inicie a aplicação e acesse
+
+```bash
+   http:// localhost:3000/api
+```
+
 ### Autor
 
 #### Bruno Miranda
