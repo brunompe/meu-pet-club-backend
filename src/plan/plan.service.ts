@@ -28,8 +28,12 @@ export class PlanService {
     }
   }
 
-  async findAll() {
-    const plans = await this.prisma.plan.findMany();
+  async findAll(user: User) {
+    const plans = await this.prisma.plan.findMany({
+      where: {
+        userId: user.id,
+      },
+    });
 
     return plans;
   }

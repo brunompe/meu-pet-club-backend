@@ -2,22 +2,31 @@ import { Injectable } from '@nestjs/common';
 import { CreatePetDto } from './dto/create-pet.dto';
 import { UpdatePetDto } from './dto/update-pet.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { User } from 'src/user/entities/user.entity';
 
 @Injectable()
 export class PetService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createPetDto: CreatePetDto) {
+  async create(createPetDto: CreatePetDto, user: User) {
+    const data = {
+      ...createPetDto,
+      userId: user.id,
+    };
+
     const pet = await this.prisma.pet.create({
-      data: createPetDto,
+      data,
     });
 
     return pet;
   }
 
-  async findAll() {
-    const pets = await this.prisma.pet.findMany();
-
+  async findAll(user: User) {
+    const pets = await this.prisma.pet.findMany({
+      where: {
+        userId: user.id,
+      },
+    });
     return pets;
   }
 
@@ -31,12 +40,17 @@ export class PetService {
     return pet;
   }
 
-  async update(id: string, updatePetDto: UpdatePetDto) {
+  async update(id: string, updatePetDto: UpdatePetDto, user: User) {
+    const data = {
+      ...updatePetDto,
+      userId: user.id,
+    };
+
     const pet = await this.prisma.pet.update({
       where: {
         id,
       },
-      data: updatePetDto,
+      data,
     });
 
     return pet;

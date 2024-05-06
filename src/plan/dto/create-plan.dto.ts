@@ -9,4 +9,7 @@ export class CreatePlanDto {
 
   @IsString()
   value: string;
+
+  @IsString()
+  userId: string;
 }

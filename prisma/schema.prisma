@@ -32,10 +32,12 @@ model Plan {
   name    String
   details String
   value   String
+  userId  String
 }
 
 model Pet {
   id     String @id @default(auto()) @map("_id") @db.ObjectId
   name   String
   planId String
+  userId String
 }

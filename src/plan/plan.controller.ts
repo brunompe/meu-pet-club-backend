@@ -23,8 +23,8 @@ export class PlanController {
   }
 
   @Get()
-  findAll() {
-    return this.planService.findAll();
+  findAll(@UserDecorator() user: User) {
+    return this.planService.findAll(user);
   }
 
   @Get(':id')

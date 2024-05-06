@@ -10,19 +10,21 @@ import {
 import { PetService } from './pet.service';
 import { CreatePetDto } from './dto/create-pet.dto';
 import { UpdatePetDto } from './dto/update-pet.dto';
+import { UserDecorator } from 'src/user/decorators/user.decorator';
+import { User } from '@prisma/client';
 
 @Controller('pet')
 export class PetController {
   constructor(private readonly petService: PetService) {}
 
   @Post()
-  create(@Body() createPetDto: CreatePetDto) {
-    return this.petService.create(createPetDto);
+  create(@Body() createPetDto: CreatePetDto, @UserDecorator() user: User) {
+    return this.petService.create(createPetDto, user);
   }
 
   @Get()
-  findAll() {
-    return this.petService.findAll();
+  findAll(@UserDecorator() user: User) {
+    return this.petService.findAll(user);
   }
 
   @Get(':id')
@@ -31,8 +33,12 @@ export class PetController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePetDto: UpdatePetDto) {
-    return this.petService.update(id, updatePetDto);
+  update(
+    @Param('id') id: string,
+    @Body() updatePetDto: UpdatePetDto,
+    @UserDecorator() user: User,
+  ) {
+    return this.petService.update(id, updatePetDto, user);
   }
 
   @Delete(':id')
